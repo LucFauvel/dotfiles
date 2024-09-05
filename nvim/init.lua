@@ -8,7 +8,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 vim.wo.number = true
 
-options = { noremap = true }
+options = { noremap = true, nowait = true }
 
 vim.api.nvim_set_keymap('n', '<Tab>', ":bnext", options)
 vim.api.nvim_set_keymap('n', '<S-Tab>', ":bprev", options)
@@ -16,6 +16,7 @@ vim.api.nvim_set_keymap('n', '<S-Tab>', ":bprev", options)
 require("nvim-tree").setup()
 require("bufferline").setup()
 require("lualine").setup { options = { theme = 'ayu_dark' } }
+require("nvim-treesitter").setup()
 
 vim.cmd [[
    highlight Normal guibg=none
