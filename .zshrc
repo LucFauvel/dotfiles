@@ -7,6 +7,10 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 source /usr/share/nvm/init-nvm.sh
 
+if [[ $(uname) != "Darwin" ]]; then
+    setxkbmap -option "caps:swapescape"
+fi
+
 tmux has-session -t pog &> /dev/null
 
 if [ $? != 0 ] 

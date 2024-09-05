@@ -13,15 +13,9 @@ options = { noremap = true, nowait = true }
 vim.api.nvim_set_keymap('n', '<Tab>', ":bnext", options)
 vim.api.nvim_set_keymap('n', '<S-Tab>', ":bprev", options)
 
+vim.bo.tabstop = 4
+
 require("nvim-tree").setup()
 require("bufferline").setup()
 require("lualine").setup { options = { theme = 'ayu_dark' } }
-require("nvim-treesitter").setup()
-
-vim.cmd [[
-   highlight Normal guibg=none
-   highlight NonText guibg=none
-   highlight Normal ctermbg=none
-   highlight NonText ctermbg=none
-]]
 
