@@ -13,11 +13,17 @@ options = { noremap = true, nowait = true }
 vim.api.nvim_set_keymap('n', '<Tab>', ":bnext<CR>", options)
 vim.api.nvim_set_keymap('n', '<S-Tab>', ":bprev<CR>", options)
 vim.api.nvim_set_keymap('n', 'oo', ":NvimTreeToggle<CR>", options)
+vim.api.nvim_set_option("clipboard", "unnamed")
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 vim.bo.tabstop = 4
 
 require("nvim-tree").setup()
 require("bufferline").setup()
 require("lualine").setup { options = { theme = 'ayu_dark' } }
-
 
