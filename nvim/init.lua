@@ -21,9 +21,16 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+-- format
+vim.keymap.set("n", "<Leader>lf", function()
+	vim.lsp.buf.format()
+end, { desc = "Format buffer" })
+
+-- lazygit
+vim.keymap.set("n", "<Leader>gg", "<cmd>silent !tmux neww lazygit<cr>", { desc = "Open lazygit in tmux" })
+
 vim.bo.tabstop = 4
 
 require("nvim-tree").setup()
 require("bufferline").setup()
 require("lualine").setup { options = { theme = 'ayu_dark' } }
-
