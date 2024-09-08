@@ -32,7 +32,19 @@ end, { desc = "Format buffer" })
 -- lazygit
 vim.keymap.set("n", "<Leader>gg", "<cmd>silent !tmux neww lazygit<cr>", { desc = "Open lazygit in tmux" })
 
-vim.bo.tabstop = 4
+vim.bo.tabstop = 2
+vim.bo.shiftwidth = 2
+vim.bo.expandtab = true
+
+-- tmux
+vim.keymap.set("n", "<C-n>", function()
+	vim.fn.system("tmux switch-client -n")
+end, { desc = "Switch tmux session forward" })
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>", { desc = "Open tmux sessionizer" })
+
+vim.keymap.set("n", "<C-p>", function()
+	vim.fn.system("tmux switch-client -p")
+end, { desc = "Switch tmux session back" })
 
 require("nvim-tree").setup()
 require("bufferline").setup()

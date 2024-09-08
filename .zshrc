@@ -6,18 +6,32 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-tmux has-session -t pog &> /dev/null
+#TMUX stuff
+function switch_tmux_window_prev {
+  if [[ -n "$TMUX" ]]; then
+    # Switch to the next session
+    tmux switch-client -p
+  else
+    echo "Not inside a tmux session."
+  fi
+}
 
-if [ $? != 0 ]
- then
-    tmux new-session -s pog -x- -y- -d -n 1
-    tmux split-window -v -t pog:0.0
-    tmux select-pane -t pog:0.1
-    tmux resize-pane -D 20
-    tmux send-keys -t pog:0.1 "cd git" Enter
-    tmux send-keys -t pog:0.0 "cd git" Enter
-    tmux send-keys -t pog:0.0 "nvim ." Enter
-    tmux select-pane -t pog:0.0
-fi
+function switch_tmux_window_next {
+  if [[ -n "$TMUX" ]]; then
+    # Switch to the next session
+    tmux switch-client -n
+  else
+    echo "Not inside a tmux session."
+  fi
+}
 
-tmux attach -t pog
+zle -N switch_tmux_window_prev
+zle -N switch_tmux_window_next
+bindkey '^p' switch_tmux_window_prev
+bindkey '^n' switch_tmux_window_next
+
+# Bind a key to invoke the custom function
+bindkey -s ^f "tmux-sessionizer\r\n"
+bindkey -s ^t "tmux list-sessions"
+
+export PATH="$HOME/bin:$PATH"

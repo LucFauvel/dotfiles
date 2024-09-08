@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  # find all directories 
+  path_to_open=$(fd . ~/git --hidden -d 1 | sed "s|^$HOME|~|")
+
+  # remove trailing slash from each line of fd output
+  path_to_open=$(echo "$path_to_open" | sed 's|/$||')
+
+  # mark selected list and pass to fzf
+  selected=$(echo "$path_to_open" | fzf)
+fi
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+# tmux wont parse the tilda
+real_path=$(echo "$selected" | sed "s|^~|$HOME|" )
+
+# remove trailing slash
+real_path=${real_path%/}
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+  tmux new-session -ds "$selected_name" -c "$real_path" -x- -y-
+  tmux split-window -v -t "$selected_name:0.0" -c "$real_path" -l 20
+  tmux send-keys -t "$selected_name:0.0" "nvim ." Enter
+  tmux select-pane -t "$selected_name:0.0"
+  tmux attach-session -t $selected_name
+  exit 0
+fi
+
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+  tmux new-session -ds "$selected_name" -c "$real_path" -x- -y-
+  tmux split-window -v -t "$selected_name:0.0" -c "$real_path" -l 20
+  tmux send-keys -t "$selected_name:0.0" "nvim ." Enter
+  tmux select-pane -t "$selected_name:0.0"
+fi
+   
+if [[ -z $TMUX ]]; then
+    tmux attach-session -t $selected_name
+else
+    tmux switch-client -t $selected_name
+fi
