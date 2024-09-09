@@ -32,9 +32,9 @@ end, { desc = "Format buffer" })
 -- lazygit
 vim.keymap.set("n", "<Leader>gg", "<cmd>silent !tmux neww lazygit<cr>", { desc = "Open lazygit in tmux" })
 
-vim.bo.tabstop = 2
-vim.bo.shiftwidth = 2
-vim.bo.expandtab = true
+vim.cmd 'set expandtab'
+vim.cmd 'set tabstop=2'
+vim.cmd 'set shiftwidth=2'
 
 -- tmux
 vim.keymap.set("n", "<C-n>", function()
@@ -48,16 +48,16 @@ end, { desc = "Switch tmux session back" })
 
 require("nvim-tree").setup()
 require("bufferline").setup()
-require("lualine").setup { 
-	options = { 
-		theme = 'ayu_dark' 
+require("lualine").setup {
+	options = {
+		theme = 'ayu_dark'
 	},
 	sections = {
-	    lualine_a = {'mode'},
-	    lualine_b = {'branch', 'diff', 'diagnostics'},
-	    lualine_c = { { 'filename', path = 2 } },
-	    lualine_x = {'encoding', 'fileformat', 'filetype'},
-	    lualine_y = {'progress'},
-	    lualine_z = {'location'}
+	  lualine_a = {'mode'},
+	  lualine_b = {'branch', 'diff', 'diagnostics'},
+	  lualine_c = { { 'filename', path = 2 } },
+	  lualine_x = {'encoding', 'fileformat', 'filetype'},
+	  lualine_y = {'progress'},
+	  lualine_z = {'location'}
 	},
 }
