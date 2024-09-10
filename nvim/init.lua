@@ -7,6 +7,7 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 options = { noremap = true, nowait = true }
 
@@ -46,7 +47,6 @@ vim.keymap.set("n", "<C-p>", function()
 	vim.fn.system("tmux switch-client -p")
 end, { desc = "Switch tmux session back" })
 
-require("nvim-tree").setup()
 require("bufferline").setup()
 require("lualine").setup {
 	options = {

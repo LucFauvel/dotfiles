@@ -25,6 +25,8 @@ function switch_tmux_window_next {
   fi
 }
 
+XDG_CONFIG_HOME="$HOME/.config"
+
 zle -N switch_tmux_window_prev
 zle -N switch_tmux_window_next
 bindkey '^p' switch_tmux_window_prev

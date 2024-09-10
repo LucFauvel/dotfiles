@@ -41,6 +41,8 @@ return {
 				"yamlls",
 				"graphql",
 				"prismals",
+				"angularls",
+				"omnisharp",
 			},
 		})
 
