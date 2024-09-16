@@ -8,6 +8,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.opt.fileformats = "unix,dos,mac"
 
 options = { noremap = true, nowait = true }
 
