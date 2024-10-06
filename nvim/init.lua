@@ -10,7 +10,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.opt.fileformats = "unix,dos,mac"
 
-options = { noremap = true, nowait = true }
+local options = { noremap = true, nowait = true }
 
 vim.api.nvim_set_keymap('n', '<Tab>', ":bnext<CR>", options)
 vim.api.nvim_set_keymap('n', '<S-Tab>', ":bprev<CR>", options)
@@ -33,6 +33,7 @@ end, { desc = "Format buffer" })
 
 -- lazygit
 vim.keymap.set("n", "<Leader>gg", "<cmd>silent !tmux neww lazygit<cr>", { desc = "Open lazygit in tmux" })
+vim.keymap.set("n", "<Leader>d", '"_d', { desc = "Delete to void" })
 
 vim.cmd 'set expandtab'
 vim.cmd 'set tabstop=2'

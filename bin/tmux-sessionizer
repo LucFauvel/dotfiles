@@ -28,18 +28,18 @@ real_path=${real_path%/}
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
   tmux new-session -ds "$selected_name" -c "$real_path" -x- -y-
-  tmux split-window -v -t "$selected_name:0.0" -c "$real_path" -l 20
-  tmux send-keys -t "$selected_name:0.0" "nvim ." Enter
-  tmux select-pane -t "$selected_name:0.0"
+  tmux new-window -t "$selected_name:2" -c "$real_path"
+  tmux send-keys -t "$selected_name:1" "nvim ." Enter
+  tmux select-window -t "$selected_name:1"
   tmux attach-session -t $selected_name
   exit 0
 fi
 
 if ! tmux has-session -t="$selected_name" 2> /dev/null; then
   tmux new-session -ds "$selected_name" -c "$real_path" -x- -y-
-  tmux split-window -v -t "$selected_name:0.0" -c "$real_path" -l 20
-  tmux send-keys -t "$selected_name:0.0" "nvim ." Enter
-  tmux select-pane -t "$selected_name:0.0"
+  tmux new-window -t "$selected_name:2" -c "$real_path"
+  tmux send-keys -t "$selected_name:1" "nvim ." Enter
+  tmux select-window -t "$selected_name:1"
 fi
    
 if [[ -z $TMUX ]]; then
