@@ -37,3 +37,12 @@ bindkey -s ^f "tmux-sessionizer\r\n"
 bindkey -s ^t "tmux list-sessions"
 
 export PATH="$HOME/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/ocx64/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+source /usr/share/nvm/init-nvm.sh
