@@ -43,8 +43,9 @@ return {
 				"graphql",
 				"prismals",
 				"angularls",
-				"omnisharp",
         "ts_ls",
+        "denols",
+        "csharp_ls",
 			},
 		})
 

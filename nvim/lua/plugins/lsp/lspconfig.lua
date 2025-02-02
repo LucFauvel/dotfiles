@@ -110,6 +110,21 @@ return {
           },
         })
       end,
+      ["denols"] = function()
+        lspconfig["denols"].setup({
+          capabilities = capabilities,
+          root_dir = function(...)
+            return lspconfig.util.root_pattern("deno.jsonc", "deno.json")(...)
+          end,
+        })
+      end,
+      ["ts_ls"] = function()
+        lspconfig["ts_ls"].setup({
+          capabilities = capabilities,
+          single_file_support = false,
+          root_dir = lspconfig.util.root_pattern("deno.json"),
+        })
+      end,
     })
   end,
 }
