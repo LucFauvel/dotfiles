@@ -7,7 +7,12 @@ return {
   },
   config = function()
     require("nvim-tree").setup({
-			view = { adaptive_size = true }
+			view = { adaptive_size = true },
+      update_focused_file = {
+        enable = true,
+        update_root = false,
+        ignore_list = {}
+      }
 		})
   end,
 }

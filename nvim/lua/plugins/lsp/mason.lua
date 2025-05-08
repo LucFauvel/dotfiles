@@ -1,11 +1,13 @@
 return {
 	"williamboman/mason.nvim",
 	dependencies = {
-		"nvim-lua/plenary.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
+    -- import lspconfig plugin
+    local lspconfig = require("lspconfig")
+
 		-- import mason
 		local mason = require("mason")
 
@@ -16,7 +18,6 @@ return {
 
 		-- enable mason and configure icons
 		mason.setup({
-      PATH = "prepend",
 			ui = {
 				icons = {
 					package_installed = "✓",
@@ -27,6 +28,8 @@ return {
 		})
 
 		mason_lspconfig.setup({
+      automatic_enable = true,
+      automatic_installation = true,
 			-- list of servers for mason to install
 			ensure_installed = {
 				"html",
@@ -42,12 +45,18 @@ return {
 				"yamlls",
 				"graphql",
 				"prismals",
-				"angularls",
         "ts_ls",
         "denols",
         "csharp_ls",
+        "powershell_es"
 			},
 		})
+
+    vim.lsp.config('denols', {
+      root_dir = function(...)
+        return lspconfig.util.root_pattern("deno.jsonc", "deno.json")(...)
+      end,
+    })
 
 		mason_tool_installer.setup({
 			ensure_installed = {
