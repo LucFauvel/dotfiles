@@ -34,6 +34,7 @@ return {
 			ensure_installed = {
 				"html",
 				"cssls",
+				"angularls",
 				"tailwindcss",
 				"lua_ls",
 				"rust_analyzer",
