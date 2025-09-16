@@ -59,6 +59,16 @@ return {
       end,
     })
 
+    vim.lsp.config('rust_analyzer', {
+      setting = {
+        ["rust-analyzer"] = {
+          inlayHints = {
+            enable = true,
+          },
+        },
+      },
+    })
+
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"prettier", -- prettier formatter

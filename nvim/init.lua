@@ -49,6 +49,10 @@ vim.keymap.set("n", "<C-p>", function()
 	vim.fn.system("tmux switch-client -p")
 end, { desc = "Switch tmux session back" })
 
+if vim.lsp.inlay_hint then
+  vim.lsp.inlay_hint.enable(true, { 0 })
+end
+
 require("bufferline").setup()
 require("lualine").setup {
 	options = {
