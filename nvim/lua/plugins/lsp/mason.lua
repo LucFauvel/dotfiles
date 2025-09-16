@@ -8,7 +8,7 @@ return {
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
 
-		-- import mason
+    -- import mason
 		local mason = require("mason")
 
 		-- import mason-lspconfig
