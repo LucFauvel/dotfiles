@@ -2,3 +2,9 @@ theme = "base16_transparent"
 
 [editor.file-picker]
 hidden = false
+
+[keys.normal]
+y = ["yank", ":clipboard-yank"]
+
+[keys.select]
+y = ["yank", ":clipboard-yank"]
