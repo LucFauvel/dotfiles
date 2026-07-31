@@ -13,3 +13,5 @@ ln -s ~/git/dotfiles/tmux ~/.config/tmux
 ln -s ~/git/dotfiles/nvim ~/.config/nvim 
 ln -s ~/git/dotfiles/ghostty/config ~/.config/ghostty/config
 ln -s ~/git/dotfiles/hypr/hyprland.lua ~/.config/hypr/hyprland.lua
+mkdir -p ~/.config/dunst
+ln -s ~/git/dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc

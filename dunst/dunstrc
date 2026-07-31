@@ -1,0 +1,118 @@
+# Sleek dark theme matching waybar (font) + Hyprland (rounding, border, accent color)
+# See dunst(5) for all options.
+
+[global]
+    monitor = 0
+    follow = none
+
+    ### Geometry ###
+    width = 320
+    height = (0, 300)
+    origin = top-right
+    offset = (12, 55)
+    scale = 0
+    notification_limit = 20
+    gap_size = 8
+
+    ### Progress bar ###
+    progress_bar = true
+    progress_bar_height = 8
+    progress_bar_frame_width = 0
+    progress_bar_min_width = 150
+    progress_bar_max_width = 280
+    progress_bar_corner_radius = 4
+    progress_bar_corners = all
+
+    icon_corner_radius = 6
+    icon_corners = all
+
+    indicate_hidden = yes
+    transparency = 6
+
+    padding = 14
+    horizontal_padding = 14
+    text_icon_padding = 10
+
+    frame_width = 2
+    frame_color = "#33ccff"
+
+    sort = yes
+    idle_threshold = 120
+
+    ### Text ###
+    font = JetBrainsMono Nerd Font 10
+    line_height = 2
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+    enable_posix_regex = false
+
+    ### Icons ###
+    enable_recursive_icon_lookup = true
+    icon_theme = Adwaita
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 96
+
+    ### History ###
+    sticky_history = yes
+    history_length = 20
+
+    ### Misc/Advanced ###
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/xdg-open
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+
+    # Match Hyprland's decoration { rounding = 10 }
+    corner_radius = 10
+    corners = all
+
+    ignore_dbusclose = false
+
+    ### Wayland ###
+    force_xwayland = false
+
+    ### Legacy ###
+    force_xinerama = false
+
+    ### mouse ###
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+[experimental]
+    per_monitor_dpi = false
+    pause_on_mouse_over = false
+    enable_pcre_regex = false
+
+[urgency_low]
+    background = "#0d0d0d"
+    foreground = "#999999"
+    frame_color = "#595959"
+    timeout = 5
+    default_icon = dialog-information
+
+[urgency_normal]
+    background = "#0d0d0d"
+    foreground = "#eeeeee"
+    frame_color = "#33ccff"
+    timeout = 6
+    override_pause_level = 30
+    default_icon = dialog-information
+
+[urgency_critical]
+    background = "#0d0d0d"
+    foreground = "#eeeeee"
+    frame_color = "#ff5555"
+    timeout = 0
+    override_pause_level = 60
+    default_icon = dialog-warning
