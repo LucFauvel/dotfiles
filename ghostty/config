@@ -43,3 +43,4 @@ background = #0d0d0d
 # resize-overlay-duration = 4s 200ms
 #
 font-size = 10
+keybind = performable:shift+insert=paste_from_clipboard
