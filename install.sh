@@ -12,4 +12,4 @@ ln -s ~/git/dotfiles/tmux ~/.config/tmux
 "source ~/git/dotfiles/.zshrc" >> ~/.zshrc
 ln -s ~/git/dotfiles/nvim ~/.config/nvim 
 ln -s ~/git/dotfiles/ghostty/config ~/.config/ghostty/config
-ln -s ~/git/dotfiles/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+ln -s ~/git/dotfiles/hypr/hyprland.lua ~/.config/hypr/hyprland.lua
