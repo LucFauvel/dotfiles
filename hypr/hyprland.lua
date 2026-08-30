@@ -15,6 +15,22 @@ hl.env("GBM_BACKEND", "nvidia-drm")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 hl.env("NVD_BACKEND", "direct")
 
+-- Machine-local env vars (e.g. WEATHER_LAT/LON) live outside this repo in
+-- ~/.config/hypr/local.env (KEY=VALUE per line) so nothing sensitive ends up
+-- in the public dotfiles. Silently skipped if the file doesn't exist.
+do
+  local localEnvFile = io.open(os.getenv("HOME") .. "/.config/hypr/local.env", "r")
+  if localEnvFile then
+    for line in localEnvFile:lines() do
+      local key, value = line:match("^%s*([%w_]+)%s*=%s*(.-)%s*$")
+      if key then
+        hl.env(key, value)
+      end
+    end
+    localEnvFile:close()
+  end
+end
+
 --------------
 -- MONITORS --
 --------------
