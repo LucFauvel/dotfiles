@@ -38,6 +38,7 @@ local menu = "~/.config/rofi/launchers/type-1/launcher.sh"
 hl.on("hyprland.start", function()
   hl.exec_cmd("waybar")
   hl.exec_cmd("hyprpaper")
+  hl.exec_cmd("gnome-keyring-daemon --start --components=pkcs11,secrets,ssh")
 end)
 
 -------------------
@@ -127,7 +128,7 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 6, bezier = "default
 
 hl.config({
   input = {
-    kb_layout = "us",
+    kb_layout = "us,ca", -- US and Canadian French; toggle with mainMod + Space
 
     follow_mouse = 1,
     sensitivity = 0, -- -1.0 to 1.0, 0 means no modification
@@ -164,6 +165,9 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float())
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo()) -- dwindle
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle
+
+-- Toggle between US and Canadian French keyboard layouts
+hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("hyprctl switchxkblayout current next"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "l" }))
